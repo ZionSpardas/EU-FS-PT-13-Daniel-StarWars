@@ -19,7 +19,7 @@ export const CardVehicle = (props) => {
             .catch(err => console.error(err))
     }, []);
 
-    console.log(store.favorites)
+    
     return (
 
         <div className="card mx-2 cardsize">

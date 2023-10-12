@@ -9,9 +9,9 @@ library.add(fas, faTwitter, faFontAwesome)
 export const Navbar = (props) => {
 	const { store, actions } = useContext(Context);
 
-	 
 	
-
+	console.log(store.favorites)
+	
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -25,7 +25,7 @@ export const Navbar = (props) => {
 					<ul class="dropdown-menu">
 						{
 							
-							store.favorites ? store.favorites.map((data, index) => <li><a className="dropdown-item" href="#">{data.name}</a></li>) : <li>teste</li>
+							//store.favorites ? store.favorites.map((data, index) => <li><a className="dropdown-item" href="#">{data.name[index]}</a></li>) : <li>teste</li>
 						}
 						<li><a className="dropdown-item" href="#">First</a></li>
 						<li><a className="dropdown-item" href="#">Second</a></li>

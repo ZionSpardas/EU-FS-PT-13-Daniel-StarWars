@@ -79,7 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			Favorites: (name, start) => {
-				setStore( {favorites: {name: name , start: start }})
+				setStore( {favorites: {name: name , start:  start }})
+				
 			},
 			
 			

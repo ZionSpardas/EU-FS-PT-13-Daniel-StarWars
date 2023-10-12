@@ -1,11 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, faTwitter, faFontAwesome)
-export const Navbar = () => {
+export const Navbar = (props) => {
+	const { store, actions } = useContext(Context);
+
+	 
+	
+
+
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -16,6 +23,10 @@ export const Navbar = () => {
 					<FontAwesomeIcon icon="fa-solid fa-heart" />  Favorites
 					</button>
 					<ul class="dropdown-menu">
+						{
+							
+							store.favorites ? store.favorites.map((data, index) => <li><a className="dropdown-item" href="#">{data.name}</a></li>) : <li>teste</li>
+						}
 						<li><a className="dropdown-item" href="#">First</a></li>
 						<li><a className="dropdown-item" href="#">Second</a></li>
 					</ul>

@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetsdata: [],
 			vehicles: [],
 			vehiclesdata: [],
+			favorites: [],
 		
 		},
 		actions: {
@@ -77,6 +78,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ vehiclesdata: data.result.properties }))
 					.catch(err => console.error(err))
 			},
+			Favorites: (name, start) => {
+				setStore( {favorites: {name: name , start: start }})
+			},
+			
 			
 		}
 	}

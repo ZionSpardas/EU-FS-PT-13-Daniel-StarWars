@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useSyncExternalStore } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -11,7 +11,7 @@ export const Navbar = (props) => {
 
 	
 	console.log(store.favorites)
-	
+
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -25,10 +25,9 @@ export const Navbar = (props) => {
 					<ul class="dropdown-menu">
 						{
 							
-							//store.favorites ? store.favorites.map((data, index) => <li><a className="dropdown-item" href="#">{data.name[index]}</a></li>) : <li>teste</li>
+							store.favorites ? store.favorites.map((data, index) => <li key={index}><a className="dropdown-item" href="#">{data.name}<button className="mx-3 border border-0 bg-transparent" onClick={() => actions.DeleteFavorite(index) }><FontAwesomeIcon icon="fa-solid fa-trash-can" /></button></a></li>) : <li>teste</li>
 						}
-						<li><a className="dropdown-item" href="#">First</a></li>
-						<li><a className="dropdown-item" href="#">Second</a></li>
+					
 					</ul>
 			</div>
 		</nav>

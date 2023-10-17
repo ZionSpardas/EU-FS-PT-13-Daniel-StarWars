@@ -79,10 +79,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			Favorites: (name, start) => {
-				setStore( {favorites: {name: name , start:  start }})
-				
-			},
-			
+                const store = getStore();
+                setStore({favorites: [...store.favorites, {name: name , start:  start }]})
+            },
+			DeleteFavorite: (index) =>{
+				const store = getStore();
+				let ok = store.favorites
+				ok.splice(index,1)
+				setStore({favorites: ok})
+			}
 			
 		}
 	}

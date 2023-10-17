@@ -35,7 +35,7 @@ export const CardPlanet = (props) => {
                         </Link>
                     </div>
                     <div className="col">
-                        <button className="btn border border-warning text-warning"><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                    <button className="btn border border-warning text-warning" onClick={() => actions.Favorites(props.nome, "planet")}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
                     </div>
                 </div>
             </div>

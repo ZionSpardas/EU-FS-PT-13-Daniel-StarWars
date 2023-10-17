@@ -20,6 +20,8 @@ export const CardPeople = (props) => {
             .catch(err => console.error(err))
     }, []);
 
+    
+
     return (
 
         <div className="card mx-2 cardsize" >
@@ -37,7 +39,7 @@ export const CardPeople = (props) => {
                         </Link>
                     </div>
                     <div className="col">
-                        <button className="btn border border-warning text-warning"><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                    <button className="btn border border-warning text-warning" onClick={() => actions.Favorites(props.nome, "character")}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
                     </div>
                 </div>
             </div>

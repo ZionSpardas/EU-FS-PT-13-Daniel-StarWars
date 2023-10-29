@@ -10,7 +10,15 @@ library.add(fas, faTwitter, faFontAwesome)
 export const CardPlanet = (props) => {
     const { store, actions } = useContext(Context);
     const [planet, setPlanet] = useState();
+    const [isClicked, setIsClicked] = useState(false);
 
+    const handleButtonClick = () => {
+        // Toggle the isClicked state
+        setIsClicked(!isClicked);
+
+        // Call your 'Favorites' function here
+        actions.Favorites(props.nome, "planet")
+    };
 
     useEffect(() => {
         fetch(props.url)
@@ -35,7 +43,7 @@ export const CardPlanet = (props) => {
                         </Link>
                     </div>
                     <div className="col">
-                    <button className="btn border border-warning text-warning" onClick={() => actions.Favorites(props.nome, "planet")}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                    <button  className={`btn btn-outline-warning  ${isClicked ? 'btn-danger' : ''}`} onClick={() => handleButtonClick()}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
                     </div>
                 </div>
             </div>

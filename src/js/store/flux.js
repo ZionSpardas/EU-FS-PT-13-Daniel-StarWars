@@ -79,9 +79,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			Favorites: (name, start) => {
-                const store = getStore();
-                setStore({favorites: [...store.favorites, {name: name , start:  start }]})
-            },
+				const store = getStore();
+			
+				
+				const isDuplicate = store.favorites.some(favorite => favorite.name === name);
+			
+				if (!isDuplicate) {
+					setStore({ favorites: [...store.favorites, { name: name, start: start }] });
+				} else {
+					
+					alert('Item is already in favorites.');
+				}
+			},
 			DeleteFavorite: (index) =>{
 				const store = getStore();
 				let ok = store.favorites

@@ -9,7 +9,15 @@ library.add(fas, faTwitter, faFontAwesome)
 export const CardVehicle = (props) => {
     const { store, actions } = useContext(Context);
     const [vehicle, setVehicle] = useState();
+    const [isClicked, setIsClicked] = useState(false);
 
+    const handleButtonClick = () => {
+        // Toggle the isClicked state
+        setIsClicked(!isClicked);
+
+        // Call your 'Favorites' function here
+        actions.Favorites(props.nome, "veh");
+    };
 
 
     useEffect(() => {
@@ -19,7 +27,7 @@ export const CardVehicle = (props) => {
             .catch(err => console.error(err))
     }, []);
 
-    
+   
     return (
 
         <div className="card mx-2 cardsize">
@@ -37,7 +45,7 @@ export const CardVehicle = (props) => {
                         </Link>
                     </div>
                     <div className="col">
-                        <button className="btn border border-warning text-warning" onClick={() => actions.Favorites(props.nome, "veh")}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                        <button  className={`btn btn-outline-warning  ${isClicked ? 'btn-danger' : ''}`} onClick={() => handleButtonClick()}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
                     </div>
                 </div>
             </div>

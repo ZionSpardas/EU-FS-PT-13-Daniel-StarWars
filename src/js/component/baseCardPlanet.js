@@ -17,14 +17,15 @@ export const CardPlanet = (props) => {
         setIsClicked(!isClicked);
 
         // Call your 'Favorites' function here
-        actions.Favorites(props.nome, "planet")
+        actions.Favorites(props.nome, "/plan/", planet.uid)
     };
-
+       
     useEffect(() => {
         fetch(props.url)
             .then(res => res.json())
             .then(data => setPlanet(data["result"]))
             .catch(err => console.error(err))
+            console.log(planet)
     }, []);
 
     return (

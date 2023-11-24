@@ -10,7 +10,7 @@ library.add(fas, faTwitter, faFontAwesome)
 
 export const CardPeople = (props) => {
     const { store, actions } = useContext(Context);
-    const [ person, setPerson ] = useState();
+    const [person, setPerson] = useState();
     const [isClicked, setIsClicked] = useState(false);
 
     const handleButtonClick = () => {
@@ -18,18 +18,18 @@ export const CardPeople = (props) => {
         setIsClicked(!isClicked);
 
         // Call your 'Favorites' function here
-        actions.Favorites(props.nome, "character")
+        actions.Favorites(props.nome, "/char/", person.uid)
     };
 
     useEffect(() => {
         fetch(props.url)
             .then(res => res.json())
-            .then(data =>setPerson(data["result"]))
+            .then(data => setPerson(data["result"]))
             .catch(err => console.error(err))
     }, []);
 
-    
 
+    console.log(person?.uid)
     return (
 
         <div className="card mx-2 cardsize" >
@@ -40,14 +40,14 @@ export const CardPeople = (props) => {
                 <p className="card-text"><strong>Hair Color : </strong>{person?.properties.hair_color}</p>
                 <p className="card-text"><strong>Eye Color : </strong>{person?.properties.eye_color}</p>
                 <div className="row">
-            
+
                     <div className="col">
                         <Link to={'/char/' + person?.uid}>
-                        <a href="#" className="btn btn-primary bg-transparent text-primary">Learn More!</a>
+                            <a href="#" className="btn btn-primary bg-transparent text-primary">Learn More!</a>
                         </Link>
                     </div>
                     <div className="col">
-                    <button  className={`btn btn-outline-warning  ${isClicked ? 'btn-danger' : ''}`} onClick={() => handleButtonClick()}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
+                        <button className={`btn btn-outline-warning  ${isClicked ? 'btn-danger' : ''}`} onClick={() => handleButtonClick()}><FontAwesomeIcon icon="fa-solid fa-heart" /></button>
                     </div>
                 </div>
             </div>

@@ -78,14 +78,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ vehiclesdata: data.result.properties }))
 					.catch(err => console.error(err))
 			},
-			Favorites: (name, start) => {
+			Favorites: (name, start, id) => {
 				const store = getStore();
 			
 				
 				const isDuplicate = store.favorites.some(favorite => favorite.name === name);
 			
 				if (!isDuplicate) {
-					setStore({ favorites: [...store.favorites, { name: name, start: start }] });
+					setStore({ favorites: [...store.favorites, { name: name, start: start , id: id}] });
 				} else {
 					
 					alert('Item is already in favorites.');

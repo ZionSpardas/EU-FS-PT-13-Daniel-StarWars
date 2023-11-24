@@ -5,13 +5,13 @@ import { Context } from "../store/appContext";
 
 export const CharSingle = props => {
 	const { store, actions } = useContext(Context);
-	
+
 	const params = useParams();
-	
+
 	useEffect(() => {
-	actions.loadPeopleData(params.uid)
+		actions.loadPeopleData(params.uid)
 	}, [])
-	
+	console.log()
 	return (
 		<div className="container-fluid mx-auto">
 			<div className="row mb-5">

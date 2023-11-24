@@ -16,7 +16,7 @@ export const CardVehicle = (props) => {
         setIsClicked(!isClicked);
 
         // Call your 'Favorites' function here
-        actions.Favorites(props.nome, "veh");
+        actions.Favorites(props.nome, "/veh/", vehicle.uid)
     };
 
 
